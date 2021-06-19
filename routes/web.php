@@ -20,6 +20,10 @@ Route::get('/', function () {
     return view('home', compact("festivals"));
 })->name('home');
 
+Route::get("/test", function() {
+    return view('test');
+});
+
 Route::get("/visitors/{festival}/create", [VisitorController::class, "create"])->name('visitors.create');
 Route::get("/festivals/{festival}/show", [FestivalController::class, "show"])->name('festivals.show');
 Route::post("/visitors/{festival}", [VisitorController::class, "store"])->name('visitors.store');

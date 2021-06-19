@@ -20,6 +20,13 @@
                     <div>
                         Address: <span class="mt-2 text-sm text-green-700 ">{{ $festival->address }}</span>
                     </div>
+                    <div>
+                        Date: <span>
+                            {{ \Carbon\Carbon::parse($festival->start_date)->format('d M, Y') }}
+                            -
+                            {{ \Carbon\Carbon::parse($festival->end_date)->format('d M, Y') }}
+                        </span>
+                    </div>
 
                     <h1 class="mt-2 mb-2 text-4xl font-bold leading-tight text-gray-800">
                         {{ $festival->name }}

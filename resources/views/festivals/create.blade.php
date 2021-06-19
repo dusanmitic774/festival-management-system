@@ -8,8 +8,8 @@
     <div class="py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    <div class="w-full max-w-xs">
+                <div class="">
+                    <div class="flex gap-5">
                         <form action="{{ route('festivals.store') }}" method="POST" enctype="multipart/form-data"
                             class="px-8 pt-6 pb-8 mb-4 bg-white rounded shadow-md">
                             @csrf
@@ -111,6 +111,7 @@
                                 </button>
                             </div>
                         </form>
+                        <div class="m-5" id="map"></div>
                     </div>
 
                 </div>
@@ -121,7 +122,6 @@
             <div class="fixed px-4 py-2 text-sm text-white bg-green-500 rounded-xl bottom-3 right-3">
                 <p>{{ session('success') }}</p>
             </div>
-
 
         @endif
     </div>
