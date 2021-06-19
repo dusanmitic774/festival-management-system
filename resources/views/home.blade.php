@@ -27,8 +27,7 @@
                     <!-- Article -->
                     <article class="overflow-hidden rounded-lg shadow-lg">
 
-                        <a href="{{ url('storage/' . $festival->image) }}">
-                            <img alt="Placeholder" class="block w-full h-auto" src="storage/{{ $festival->image }}">
+                        <a href="{{ url('storage/' . $festival->image) }}"><img alt="Placeholder" class="block w-full h-auto" src="storage/{{ $festival->image }}">
                         </a>
 
                         <header class="flex items-center justify-between p-2 leading-tight md:p-4">
