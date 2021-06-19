@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Festival;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 
 class FestivalController extends Controller
 {
@@ -48,20 +49,14 @@ class FestivalController extends Controller
             'image' => 'required|max:255|image'
         ]);
 
-        $imagePath = $request->image->store('images', 'public');
+        $imagePath = $this->resizeImage($request);
+        $data['image'] = $imagePath;
 
-        Festival::create([
-            'name' => $data['name'],
-            'country' => $data['country'],
-            'city' => $data['city'],
-            'address' => $data['address'],
-            'description' => $data['description'],
-            'start_date' => $data['start_date'],
-            'end_date' => $data['end_date'],
-            'image' => $imagePath,
-        ]);
+        Festival::create($data);
 
-        return redirect("/");
+        session()->flash('success', 'Festival created successfully');
+
+        return redirect()->route("festivals.index");
     }
 
     /**
@@ -81,9 +76,9 @@ class FestivalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Festival $festival)
     {
-        //
+        return view("festivals.edit", compact('festival'));
     }
 
     /**
@@ -93,9 +88,40 @@ class FestivalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Festival $festival)
     {
-        //
+        $data = $request->validate([
+            'name' => 'required|max:255',
+            'country' => 'required|max:255',
+            'city' => 'required|max:255',
+            'address' => 'required|max:255',
+            'description' => 'required',
+            'start_date' => 'required|max:255',
+            'end_date' => 'required|max:255',
+            'image' => ''
+        ]);
+
+        $imagePath = $festival->image;
+
+        if(!empty($request->image)) {
+            $imagePath = $this->resizeImage($request);
+        }
+
+        $data['image'] = $imagePath;
+
+        $festival->update($data);
+
+        session()->flash('success', 'Festival updated successfully');
+
+        return redirect()->route("festivals.index");
+    }
+
+    private function resizeImage(Request $request)
+    {
+        $imagePath = $request->image->store('images', 'public');
+        $image = Image::make(public_path("storage/{$imagePath}"))->fit(1200, 1200);
+        $image->save();
+        return $imagePath;
     }
 
     /**

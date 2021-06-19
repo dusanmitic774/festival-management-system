@@ -18,12 +18,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/festivals', [FestivalController::class, "index"])->name('festivals.index');
 
-Route::get('/festival', [FestivalController::class, "index"]);
-Route::get('/festival/create', [FestivalController::class, "create"]);
-Route::post('/festival', [FestivalController::class, "store"])->name("festival.store");
+Route::group(["middleware" => "auth"], function() {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+
+    Route::get('/festivals/create', [FestivalController::class, "create"])->name("festivals.create");
+    Route::get('/festivals/{festival}/edit', [FestivalController::class, "edit"])->name("festivals.edit");
+    Route::post('/festivals', [FestivalController::class, "store"])->name("festivals.store");
+    Route::put('/festivals/{festival}', [FestivalController::class, "update"])->name("festivals.update");
+});
 
 require __DIR__.'/auth.php';

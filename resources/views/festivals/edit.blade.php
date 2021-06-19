@@ -9,19 +9,19 @@
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-
-
                     <div class="w-full max-w-xs">
-                        <form action="{{ route('festivals.store') }}" method="POST" enctype="multipart/form-data"
-                            class="px-8 pt-6 pb-8 mb-4 bg-white rounded shadow-md">
+                        <form action="{{ route('festivals.update', $festival) }}" method="POST"
+                            enctype="multipart/form-data" class="px-8 pt-6 pb-8 mb-4 bg-white rounded shadow-md">
                             @csrf
+                            @method("PUT")
                             <div class="mb-4">
                                 <label class="block mb-2 text-sm font-bold text-gray-700" for="name">
                                     Festival Name
                                 </label>
                                 <input
                                     class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                    id="name" type="text" placeholder="name" name="name" value="{{ old('name') }}">
+                                    id="name" type="text" placeholder="name" name="name"
+                                    value="{{ $festival->name }}">
                                 @error('name')
                                     <p class="text-xs italic text-red-500">{{ $message }}</p>
                                 @enderror
@@ -32,7 +32,8 @@
                                 </label>
                                 <input
                                     class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-                                    id="city" type="text" placeholder="city" name="city" value="{{ old('city') }}">
+                                    id="city" type="text" placeholder="city" name="city"
+                                    value="{{ $festival->city }}">
                                 @error('city')
                                     <p class="text-xs italic text-red-500">{{ $message }}</p>
                                 @enderror
@@ -44,7 +45,7 @@
                                 <input
                                     class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                                     id="country" type="text" placeholder="country" name="country"
-                                    value="{{ old('country') }}">
+                                    value="{{ $festival->country }}">
                                 @error('country')
                                     <p class="text-xs italic text-red-500">{{ $message }}</p>
                                 @enderror
@@ -56,7 +57,7 @@
                                 <input
                                     class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                                     id="address" type="text" placeholder="address" name="address"
-                                    value="{{ old('address') }}">
+                                    value="{{ $festival->address }}">
                                 @error('address')
                                     <p class="text-xs italic text-red-500">{{ $message }}</p>
                                 @enderror
@@ -68,7 +69,7 @@
                                 <input
                                     class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                                     id="start_date" type="date" placeholder="start_date" name="start_date"
-                                    value="{{ old('start_date') }}">
+                                    value="{{ $festival->start_date }}">
                                 @error('start_date')
                                     <p class="text-xs italic text-red-500">{{ $message }}</p>
                                 @enderror
@@ -80,7 +81,7 @@
                                 <input
                                     class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
                                     id="end_date" type="date" placeholder="end_date" name="end_date"
-                                    value="{{ old('end_date') }}">
+                                    value="{{ $festival->end_date }}">
                                 @error('end_date')
                                     <p class="text-xs italic text-red-500">{{ $message }}</p>
                                 @enderror
@@ -91,7 +92,7 @@
                                 </label>
 
                                 <textarea class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none"
-                                    rows="4" name="description">{{ old('description') }}</textarea>
+                                    rows="4" name="description">{{ $festival->description }}</textarea>
                                 @error('description')
                                     <p class="text-xs italic text-red-500">{{ $message }}</p>
                                 @enderror
