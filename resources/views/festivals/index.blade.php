@@ -59,13 +59,16 @@
                                                     </td>
                                                     <td
                                                         class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                                                        <a href="{{ route("festivals.edit", $festival) }}"
+                                                        <a href="{{ route('festivals.edit', $festival) }}"
                                                             class="text-indigo-600 hover:text-indigo-900">Edit</a>
                                                     </td>
                                                     <td
                                                         class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                                                        <a href="#"
-                                                            class="text-indigo-600 hover:text-indigo-900">Delete</a>
+                                                           <form action="{{ route('festivals.delete', $festival) }}" method="POST">
+                                                               @csrf
+                                                               @method("DELETE")
+                                                               <button type="submit" class="text-indigo-600 hover:text-indigo-900">Delete</button>
+                                                           </form>
                                                     </td>
                                                 </tr>
                                             @endforeach

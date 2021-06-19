@@ -29,6 +29,7 @@ Route::group(["middleware" => "auth"], function() {
     Route::get('/festivals/{festival}/edit', [FestivalController::class, "edit"])->name("festivals.edit");
     Route::post('/festivals', [FestivalController::class, "store"])->name("festivals.store");
     Route::put('/festivals/{festival}', [FestivalController::class, "update"])->name("festivals.update");
+    Route::delete('/festivals/{festival}', [FestivalController::class, "destroy"])->name("festivals.delete");
 });
 
 require __DIR__.'/auth.php';
