@@ -1,20 +1,6 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+@extends('layouts.main')
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Laravel</title>
-
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-
-    <!-- Styles -->
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
-</head>
-
-<body class="antialiased">
+@section('content')
     @if (Route::has('login'))
         <div class="fixed top-0 right-0 hidden px-6 py-4 sm:block">
             @auth
@@ -73,7 +59,7 @@
                             </a>
                             <button
                                 class='flex items-center px-3 py-1 ml-auto border border-gray-300 rounded-full gap-1 sm:text-lg hover:bg-gray-50 transition-colors focus:bg-gray-100 focus:outline-none focus-visible:border-gray-500'>
-                                <span>Read more</span>
+                                <a href="{{ route('visitors.create', $festival) }}"><span>Join</span></a>
                             </button>
                             {{-- <a class="no-underline text-grey-darker hover:text-red-dark" href="#"> --}}
                             {{-- <span class="hidden">Like</span> --}}
@@ -90,8 +76,4 @@
         </div>
     {{ $festivals->links() }}
     </div>
-
-</body>
-
-
-</html>
+@endsection

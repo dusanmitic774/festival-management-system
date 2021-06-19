@@ -20,7 +20,8 @@ Route::get('/', function () {
     return view('home', compact("festivals"));
 })->name('home');
 
-Route::get("/visitor/create", [VisitorController::class, "create"]);
+Route::get("/visitors/{festival}/create", [VisitorController::class, "create"])->name('visitors.create');
+Route::post("/visitors/{festival}", [VisitorController::class, "store"])->name('visitors.store');
 
 
 Route::get('/festivals', [FestivalController::class, "index"])->name('festivals.index');
