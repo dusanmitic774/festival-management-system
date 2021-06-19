@@ -80,6 +80,9 @@
                     </div>
                 </div>
             </div>
+        <div class="mt-2">
+            {{ $festivals->links() }}
+        </div>
         </div>
         @if (session()->has('success'))
 

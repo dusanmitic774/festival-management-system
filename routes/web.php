@@ -15,8 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    $festivals = App\Models\Festival::latest()->paginate(9);
+    return view('home', compact("festivals"));
+})->name('home');
 
 Route::get('/festivals', [FestivalController::class, "index"])->name('festivals.index');
 

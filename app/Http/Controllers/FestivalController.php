@@ -15,7 +15,7 @@ class FestivalController extends Controller
      */
     public function index()
     {
-        $festivals = Festival::all();
+        $festivals = Festival::paginate(10);
 
         return view('festivals.index', compact('festivals'));
     }
