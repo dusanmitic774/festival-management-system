@@ -22,6 +22,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+Route::get('/festival', [FestivalController::class, "index"]);
 Route::get('/festival/create', [FestivalController::class, "create"]);
 Route::post('/festival', [FestivalController::class, "store"])->name("festival.store");
 
