@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FestivalController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,5 +21,8 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::get('/festival/create', [FestivalController::class, "create"]);
+Route::post('/festival', [FestivalController::class, "store"])->name("festival.store");
 
 require __DIR__.'/auth.php';

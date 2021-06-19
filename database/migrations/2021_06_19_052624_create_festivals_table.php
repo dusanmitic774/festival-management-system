@@ -20,7 +20,7 @@ class CreateFestivalsTable extends Migration
             $table->string("city");
             $table->string("address");
             $table->string("image");
-            $table->string("description");
+            $table->text("description");
             $table->date("start_date");
             $table->date("end_date");
 
