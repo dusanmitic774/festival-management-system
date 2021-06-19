@@ -5,14 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Festival extends Model
+class Visitor extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
 
-    public function visitors()
+    public function festivals()
     {
-        return $this->belongsToMany(Visitor::class);
+        return $this->belongsToMany(Festival::class);
     }
+    
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FestivalController;
+use App\Http\Controllers\VisitorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +19,9 @@ Route::get('/', function () {
     $festivals = App\Models\Festival::latest()->paginate(9);
     return view('home', compact("festivals"));
 })->name('home');
+
+Route::get("/visitor/create", [VisitorController::class, "create"]);
+
 
 Route::get('/festivals', [FestivalController::class, "index"])->name('festivals.index');
 
