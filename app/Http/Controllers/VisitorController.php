@@ -23,12 +23,13 @@ class VisitorController extends Controller
 
         $visitor = Visitor::where('email', '=', request('email'))->first();
 
-        if($visitor == null) {
+        if($visitor === null) {
             $visitor = new Visitor(request(['first_name', 'last_name', 'email']));
+            $visitor->save();
+            $visitor->festivals()->attach($festival);
+        }else {
+            session()->flash('error', 'User already registered for festival');
         }
-        $visitor->save();
-
-        $visitor->festivals()->attach($festival);
 
         return redirect()->route('home');
     }

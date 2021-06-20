@@ -8,10 +8,9 @@
     <div class="py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    <div class="w-full max-w-xs">
+                    <div class="flex flex-wrap gap-5">
                         <form action="{{ route('festivals.update', $festival) }}" method="POST"
-                            enctype="multipart/form-data" class="px-8 pt-6 pb-8 mb-4 bg-white rounded shadow-md">
+                            enctype="multipart/form-data" class="w-full px-8 pt-6 pb-8 m-5 bg-white rounded shadow-md md:flex-1">
                             @csrf
                             @method("PUT")
                             <div class="mb-4">
@@ -86,6 +85,8 @@
                                     <p class="text-xs italic text-red-500">{{ $message }}</p>
                                 @enderror
                             </div>
+                            <input type="hidden" name="latitude" value="{{ $festival->latitude }}" id="latitude">
+                            <input type="hidden" name="longitude" value="{{ $festival->longitude }}" id="longitude">
                             <div class="mb-4">
                                 <label class="block mb-2 text-sm font-bold text-gray-700" for="description">
                                     Description
@@ -114,9 +115,14 @@
                                 </button>
                             </div>
                         </form>
+                        <div class="w-full m-5 md:flex-1">
+                            <div class="h-96" id="map"></div>
+                            @error('latitude')
+                                <span class="text-xs italic text-red-500">You must choose the location</span>
+                            @enderror
+                        </div>
                     </div>
 
-                </div>
             </div>
         </div>
         @if (session()->has('success'))
@@ -124,8 +130,6 @@
             <div class="fixed px-4 py-2 text-sm text-white bg-green-500 rounded-xl bottom-3 right-3">
                 <p>{{ session('success') }}</p>
             </div>
-
-
         @endif
     </div>
 </x-app-layout>

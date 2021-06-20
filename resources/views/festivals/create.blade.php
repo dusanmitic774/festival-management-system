@@ -5,13 +5,13 @@
         </h2>
     </x-slot>
 
+
     <div class="py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
-                <div class="">
-                    <div class="flex gap-5">
+                    <div class="flex flex-wrap gap-5">
                         <form action="{{ route('festivals.store') }}" method="POST" enctype="multipart/form-data"
-                            class="px-8 pt-6 pb-8 mb-4 bg-white rounded shadow-md">
+                            class="w-full px-8 pt-6 pb-8 m-5 bg-white rounded shadow-md md:flex-1">
                             @csrf
                             <div class="mb-4">
                                 <label class="block mb-2 text-sm font-bold text-gray-700" for="name">
@@ -83,6 +83,8 @@
                                     <p class="text-xs italic text-red-500">{{ $message }}</p>
                                 @enderror
                             </div>
+                            <input type="hidden" name="latitude" value="" id="latitude">
+                            <input type="hidden" name="longitude" value="" id="longitude">
                             <div class="mb-4">
                                 <label class="block mb-2 text-sm font-bold text-gray-700" for="description">
                                     Description
@@ -111,10 +113,13 @@
                                 </button>
                             </div>
                         </form>
-                        <div class="m-5" id="map"></div>
+                        <div class="w-full m-5 md:flex-1">
+                        <div class="h-96" id="map"></div>
+                            @error('latitude')
+                                <span class="text-xs italic text-red-500">You must choose the location</span>
+                            @enderror
+                        </div>
                     </div>
-
-                </div>
             </div>
         </div>
         @if (session()->has('success'))

@@ -12,6 +12,28 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/map.css') }}" />
+
+    <script>
+        // Initialize and add the map
+        function initMap() {
+            const position = {
+                lat: {{ $festival->latitude }},
+                lng: {{ $festival->longitude }}
+            }
+
+            console.log(position);
+            // The map, centered on Serbia
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 6,
+                center: position,
+            });
+            marker = new google.maps.Marker({
+                position: position,
+                map: map,
+            });
+        }
+    </script>
 </head>
 
 <body class="antialiased">
@@ -30,6 +52,10 @@
     @endif
 
     @yield('content')
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&callback=initMap&libraries=&v=weekly"
+      async
+    ></script>
 </body>
 
 </html>

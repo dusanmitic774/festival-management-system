@@ -35,6 +35,8 @@ class FestivalController extends Controller
             'description' => 'required',
             'start_date' => 'required|max:255',
             'end_date' => 'required|max:255',
+            'latitude' => 'required',
+            'longitude' => 'required',
             'image' => 'required|max:255|image'
         ]);
 
@@ -63,6 +65,8 @@ class FestivalController extends Controller
             'description' => 'required',
             'start_date' => 'required|max:255',
             'end_date' => 'required|max:255',
+            'latitude' => 'required',
+            'longitude' => 'required',
             'image' => ''
         ]);
 

@@ -17,16 +17,6 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
-    <style type="text/css">
-        /* Set the size of the div element that contains the map */
-        #map {
-            height: 400px;
-            /* The height is 400 pixels */
-            width: 100%;
-            /* The width is the width of the web page */
-        }
-
-    </style>
     <script>
         // Initialize and add the map
         function initMap() {
@@ -40,9 +30,8 @@
                 center: serbia,
             });
             map.addListener("click", (e) => {
-                console.log(e.latLng.lat());
-                console.log(e.latLng.lng());
                 placeMarkerAndPanTo(e.latLng, map);
+                addValuesToInputFields(e.latLng.lat(), e.latLng.lng())
             });
         }
 
@@ -57,6 +46,12 @@
             }
             map.panTo(latLng);
         }
+        
+        function addValuesToInputFields(lat, lng) {
+            let latitude = document.getElementById("latitude").value = lat;
+            let longitude = document.getElementById("longitude").value = lng;
+        }
+
     </script>
 </head>
 
@@ -76,7 +71,7 @@
             {{ $slot }}
         </main>
     </div>
-    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+
     <script
         src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&callback=initMap&libraries=&v=weekly"
         async></script>

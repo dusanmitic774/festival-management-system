@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-    <div class="container px-4 mx-auto my-48 md:px-12">
+    <div class="container px-4 mx-auto my-36 md:px-12">
         <div class="mb-16 text-4xl text-center">
             <h1>Festivals</h1>
         </div>
@@ -10,8 +10,7 @@
                 <!-- Column -->
                 <div class="w-full px-1 my-1 md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
 
-                    <!-- Article -->
-                    <article class="overflow-hidden rounded-lg shadow-lg">
+                    <!-- Article --> <article class="overflow-hidden rounded-lg shadow-lg">
 
                         <a href="{{ route("festivals.show", $festival) }}"><img alt="Placeholder" class="block w-full h-auto" src="storage/{{ $festival->image }}">
                         </a>
@@ -61,4 +60,11 @@
         </div>
         {{ $festivals->links() }}
     </div>
+    @if (session()->has('error'))
+
+        <div class="fixed px-4 py-2 text-sm text-white bg-red-500 rounded-xl bottom-3 right-3">
+            <p>{{ session('error') }}</p>
+        </div>
+
+    @endif
 @endsection
