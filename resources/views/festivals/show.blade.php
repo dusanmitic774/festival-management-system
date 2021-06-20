@@ -14,6 +14,8 @@
                     <h1 class="mt-2 mb-2 text-4xl font-bold leading-tight text-gray-800">
                         {{ $festival->name }}
                     </h1>
+                    <div class="flex flex-wrap my-10 lg:my-20 lg:gap-20">
+                        <div class="md:flex-1">
                             <div class="mt-8">
                                 Country: <span class="mt-2 text-sm text-green-700 ">{{ $festival->country }}</span>
                             </div>
@@ -30,14 +32,12 @@
                                     {{ \Carbon\Carbon::parse($festival->end_date)->format('d M, Y') }}
                                 </span>
                             </div>
-                    <div class="flex flex-wrap my-10 lg:my-20 lg:gap-20">
-                        <div class="md:flex-1">
-                            <p class="mb-4 text-gray-600">{{ $festival->description }}</p>
                         </div>
                         <div class="w-full md:flex-1">
                             <div class="h-80" id="map"></div>
                         </div>
                     </div>
+                            <p class="mb-4 text-gray-600">{{ $festival->description }}</p>
 
                     <a href="{{ route('visitors.create', $festival) }}"
                         class="inline-block px-6 py-3 mt-2 text-gray-100 bg-green-700 rounded-md">
