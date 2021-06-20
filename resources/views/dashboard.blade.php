@@ -15,9 +15,9 @@
         </div>
         @if (session()->has('success'))
 
-        <div class="fixed px-4 py-2 text-sm text-white bg-green-500 rounded-xl bottom-3 right-3">
-            <p>{{ session('success') }}</p>
-        </div>
+            <div class="fixed px-4 py-2 text-sm text-white bg-green-500 rounded-xl bottom-3 right-3">
+                <p>{{ session('success') }}</p>
+            </div>
 
 
         @endif

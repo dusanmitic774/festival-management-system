@@ -10,7 +10,7 @@ class FestivalController extends Controller
 {
     public function index()
     {
-        $festivals = Festival::paginate(10);
+        $festivals = Festival::with("visitors")->paginate(10);
 
         return view('festivals.index', compact('festivals'));
     }
@@ -72,7 +72,7 @@ class FestivalController extends Controller
 
         $imagePath = $festival->image;
 
-        if(!empty($request->image)) {
+        if (!empty($request->image)) {
             $imagePath = $this->resizeImage($request);
         }
 

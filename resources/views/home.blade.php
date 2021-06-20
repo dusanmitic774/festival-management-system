@@ -6,13 +6,16 @@
             <h1>Festivals</h1>
         </div>
         <div class="flex flex-wrap -mx-1 lg:-mx-4">
-            @foreach ($festivals as $festival)
-                <!-- Column -->
+        @foreach ($festivals as $festival)
+            <!-- Column -->
                 <div class="w-full px-1 my-1 md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
 
-                    <!-- Article --> <article class="overflow-hidden rounded-lg shadow-lg">
+                    <!-- Article -->
+                    <article class="overflow-hidden rounded-lg shadow-lg">
 
-                        <a href="{{ route("festivals.show", $festival) }}"><img alt="Placeholder" class="block w-full h-auto" src="storage/{{ $festival->image }}">
+                        <a href="{{ route("festivals.show", $festival) }}"><img alt="Placeholder"
+                                                                                class="block w-full h-auto"
+                                                                                src="storage/{{ $festival->image }}">
                         </a>
 
                         <header class="flex items-center justify-between p-2 leading-tight md:p-4">
@@ -29,15 +32,15 @@
                         </header>
 
                         <div class="py-1 md:p-4">
-                                <p class="text-sm text-gray-500 sm:text-base line-clamp-3">
-                                    Country: {{ $festival->country }}
-                                </p>
-                                <p class="text-sm text-gray-500 sm:text-base line-clamp-3">
-                                    City: {{ $festival->city }}
-                                </p>
-                                <p class="text-sm text-gray-500 sm:text-base line-clamp-3">
-                                    Address: {{ $festival->address }}
-                                </p>
+                            <p class="text-sm text-gray-500 sm:text-base line-clamp-3">
+                                Country: {{ $festival->country }}
+                            </p>
+                            <p class="text-sm text-gray-500 sm:text-base line-clamp-3">
+                                City: {{ $festival->city }}
+                            </p>
+                            <p class="text-sm text-gray-500 sm:text-base line-clamp-3">
+                                Address: {{ $festival->address }}
+                            </p>
                         </div>
 
                         <footer class="flex items-center justify-between p-2 leading-none md:p-4">

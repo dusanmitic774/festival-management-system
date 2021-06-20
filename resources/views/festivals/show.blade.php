@@ -37,10 +37,10 @@
                             <div class="h-80" id="map"></div>
                         </div>
                     </div>
-                            <p class="mb-4 text-gray-600">{{ $festival->description }}</p>
+                    <p class="mb-4 text-gray-600">{{ $festival->description }}</p>
 
                     <a href="{{ route('visitors.create', $festival) }}"
-                        class="inline-block px-6 py-3 mt-2 text-gray-100 bg-green-700 rounded-md">
+                       class="inline-block px-6 py-3 mt-2 text-gray-100 bg-green-700 rounded-md">
                         Join
                     </a>
                 </div>

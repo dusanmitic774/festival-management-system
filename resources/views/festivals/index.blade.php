@@ -15,92 +15,93 @@
                                 <div class="overflow-hidden border-b border-gray-200 shadow sm:rounded-lg">
                                     <table class="min-w-full divide-y divide-gray-200">
                                         <thead class="bg-gray-50">
-                                            <tr>
-                                                <th scope="col"
-                                                    class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                                                    Name
-                                                </th>
-                                                <th scope="col"
-                                                    class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                                                    Place
-                                                </th>
-                                                <th scope="col"
-                                                    class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
-                                                    Date
-                                                </th>
-                                                <th scope="col" class="relative px-6 py-3">
-                                                    <span class="sr-only">View</span>
-                                                </th>
-                                                <th scope="col" class="relative px-6 py-3">
-                                                    <span class="sr-only">Edit</span>
-                                                </th>
-                                                <th scope="col" class="relative px-6 py-3">
-                                                    <span class="sr-only">Delete</span>
-                                                </th>
-                                            </tr>
+                                        <tr>
+                                            <th scope="col"
+                                                class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                                Name
+                                            </th>
+                                            <th scope="col"
+                                                class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                                Place
+                                            </th>
+                                            <th scope="col"
+                                                class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                                Date
+                                            </th>
+                                            <th scope="col" class="relative px-6 py-3">
+                                                <span class="sr-only">View</span>
+                                            </th>
+                                            <th scope="col" class="relative px-6 py-3">
+                                                <span class="sr-only">Edit</span>
+                                            </th>
+                                            <th scope="col" class="relative px-6 py-3">
+                                                <span class="sr-only">Delete</span>
+                                            </th>
+                                        </tr>
                                         </thead>
                                         <tbody class="bg-white divide-y divide-gray-200">
-                                            @foreach ($festivals as $festival)
-                                                <tr>
-                                                    <td class="px-6 py-4 whitespace-nowrap">
-                                                        <div class="flex items-center">
-                                                            <div class="text-sm font-medium text-gray-900">
-                                                                {{ $festival->name }}
-                                                            </div>
+                                        @foreach ($festivals as $festival)
+                                            <tr>
+                                                <td class="px-6 py-4 whitespace-nowrap">
+                                                    <div class="flex items-center">
+                                                        <div class="text-sm font-medium text-gray-900">
+                                                            {{ $festival->name }}
                                                         </div>
-                                                    </td>
-                                                    <td class="px-6 py-4 whitespace-nowrap">
-                                                        <div class="text-sm text-gray-900">{{ $festival->country }},
-                                                            {{ $festival->city }}
-                                                        </div>
-                                                    </td>
-                                                    <td class="px-6 py-4 whitespace-nowrap">
-                                                        <div class="text-sm text-gray-900">{{ $festival->start_date }}
-                                                            - {{ $festival->end_date }}
-                                                        </div>
-                                                    </td>
-                                                    <td
-                                                        class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
+                                                    </div>
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-nowrap">
+                                                    <div class="text-sm text-gray-900">{{ $festival->country }},
+                                                        {{ $festival->city }}
+                                                    </div>
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-nowrap">
+                                                    <div class="text-sm text-gray-900">{{ $festival->start_date }}
+                                                        - {{ $festival->end_date }}
+                                                    </div>
+                                                </td>
+                                                <td
+                                                    class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
                                                         <span
-                                                            class="text-indigo-600 cursor-pointer hover:text-indigo-900 visitors-button">People</span>
+                                                            class="text-indigo-600 cursor-pointer hover:text-indigo-900 visitors-button">People({{count($festival->visitors)}})</span>
 
-                                                    </td>
-                                                    <td
-                                                        class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                                                        <a href="{{ route('festivals.edit', $festival) }}"
-                                                            class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                                                    </td>
-                                                    <td
-                                                        class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-                                                        <form action="{{ route('festivals.delete', $festival) }}"
-                                                            method="POST">
-                                                            @csrf
-                                                            @method("DELETE")
-                                                            <button type="submit"
-                                                                class="text-indigo-600 hover:text-indigo-900">Delete</button>
-                                                        </form>
-                                                    </td>
-                                                </tr>
-                                                <tr >
-                                                    <td colspan="4" class="hidden visitors">
-                                                        <div>
-                                                            <table class="min-w-full divide-y divide-gray-200">
-                                                                <thead class="bg-green-50">
-                                                                    <tr>
-                                                                        <th class="px-6 text-xs font-medium text-left text-gray-500">
-                                                                            First Name
-                                                                        </th>
-                                                                        <th class="px-6 text-xs font-medium text-left text-gray-500">
-                                                                            Last Name
-                                                                        </th>
-                                                                        <th class="px-6 text-xs font-medium text-left text-gray-500">
-                                                                            Email Name
-                                                                        </th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
+                                                </td>
+                                                <td
+                                                    class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
+                                                    <a href="{{ route('festivals.edit', $festival) }}"
+                                                       class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                                </td>
+                                                <td
+                                                    class="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
+                                                    <form action="{{ route('festivals.delete', $festival) }}"
+                                                          method="POST">
+                                                        @csrf
+                                                        @method("DELETE")
+                                                        <button type="submit"
+                                                                class="text-indigo-600 hover:text-indigo-900">Delete
+                                                        </button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="4" class="hidden visitors">
+                                                    <div>
+                                                        <table class="min-w-full divide-y divide-gray-200">
+                                                            <thead class="bg-green-50">
+                                                            <tr>
+                                                                <th class="px-6 text-xs font-medium text-left text-gray-500">
+                                                                    First Name
+                                                                </th>
+                                                                <th class="px-6 text-xs font-medium text-left text-gray-500">
+                                                                    Last Name
+                                                                </th>
+                                                                <th class="px-6 text-xs font-medium text-left text-gray-500">
+                                                                    Email Name
+                                                                </th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
 
-                                                                </tbody>
+                                                            </tbody>
                                                             @foreach ($festival->visitors as $visitor)
                                                                 <tr>
                                                                     <td class="px-6 py-1 whitespace-nowrap">
@@ -114,11 +115,11 @@
                                                                     </td>
                                                                 </tr>
                                                             @endforeach
-                                                            </table>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
+                                                        </table>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                         </tbody>
                                     </table>
                                 </div>
@@ -145,7 +146,7 @@
         let visitors = document.getElementsByClassName("visitors");
 
         for (let i = 0; i < visitorsButton.length; i++) {
-            visitorsButton[i].addEventListener('click', function() {
+            visitorsButton[i].addEventListener('click', function () {
                 visitors[i].classList.toggle("hidden")
             })
         }

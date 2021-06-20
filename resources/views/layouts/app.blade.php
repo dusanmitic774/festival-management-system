@@ -46,7 +46,7 @@
             }
             map.panTo(latLng);
         }
-        
+
         function addValuesToInputFields(lat, lng) {
             let latitude = document.getElementById("latitude").value = lat;
             let longitude = document.getElementById("longitude").value = lng;
@@ -56,25 +56,25 @@
 </head>
 
 <body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-100">
-        @include('layouts.navigation')
+<div class="min-h-screen bg-gray-100">
+@include('layouts.navigation')
 
-        <!-- Page Heading -->
-        <header class="bg-white shadow">
-            <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
-                {{ $header }}
-            </div>
-        </header>
+<!-- Page Heading -->
+    <header class="bg-white shadow">
+        <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
+            {{ $header }}
+        </div>
+    </header>
 
-        <!-- Page Content -->
-        <main>
-            {{ $slot }}
-        </main>
-    </div>
+    <!-- Page Content -->
+    <main>
+        {{ $slot }}
+    </main>
+</div>
 
-    <script
-        src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&callback=initMap&libraries=&v=weekly"
-        async></script>
+<script
+    src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&callback=initMap&libraries=&v=weekly"
+    async></script>
 </body>
 
 </html>

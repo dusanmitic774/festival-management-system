@@ -15,5 +15,5 @@ class Visitor extends Model
     {
         return $this->belongsToMany(Festival::class);
     }
-    
+
 }
