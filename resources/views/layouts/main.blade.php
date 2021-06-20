@@ -18,8 +18,8 @@
         // Initialize and add the map
         function initMap() {
             const position = {
-                lat: {{ $festival->latitude }},
-                lng: {{ $festival->longitude }}
+                lat: {{ $festival->latitude ?? 44.292401 }},
+                lng: {{ $festival->longitude ?? 21.162583 }}
             }
 
             console.log(position);
