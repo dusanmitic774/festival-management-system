@@ -36,10 +36,11 @@
 <body class="antialiased">
 @if (Route::has('login'))
     <div class="sticky top-0 right-0 px-6 py-4 bg-white">
+            <a href="{{ route("home") }}" class="text-sm text-gray-700 underline">Home</a>
         @auth
             <a href="{{ route("festivals.index") }}" class="text-sm text-gray-700 underline">Dashboard</a>
         @else
-            <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
+            <a href="{{ route('login') }}" class="ml-4 text-sm text-gray-700 underline">Log in</a>
 
             @if (Route::has('register'))
                 <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
