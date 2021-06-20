@@ -97,6 +97,9 @@
                                                                 <th class="px-6 text-xs font-medium text-left text-gray-500">
                                                                     Email
                                                                 </th>
+                                                                <th class="px-6 text-xs font-medium text-left text-gray-500">
+                                                                    Join Date
+                                                                </th>
                                                             </tr>
                                                             </thead>
                                                             <tbody>
@@ -112,6 +115,9 @@
                                                                     </td>
                                                                     <td>
                                                                         {{ $visitor->email }}
+                                                                    </td>
+                                                                    <td>
+                                                                        {{ \Carbon\Carbon::parse($visitor->created_at)->format('d M, Y') }}
                                                                     </td>
                                                                 </tr>
                                                             @endforeach
