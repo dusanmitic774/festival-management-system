@@ -95,7 +95,7 @@
                                                                     Last Name
                                                                 </th>
                                                                 <th class="px-6 text-xs font-medium text-left text-gray-500">
-                                                                    Email Name
+                                                                    Email
                                                                 </th>
                                                             </tr>
                                                             </thead>
