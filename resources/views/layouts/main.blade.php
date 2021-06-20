@@ -35,7 +35,7 @@
 
 <body class="antialiased">
 @if (Route::has('login'))
-    <div class="fixed top-0 right-0 px-6 py-4">
+    <div class="sticky top-0 right-0 px-6 py-4 bg-white">
         @auth
             <a href="{{ route("festivals.index") }}" class="text-sm text-gray-700 underline">Dashboard</a>
         @else
